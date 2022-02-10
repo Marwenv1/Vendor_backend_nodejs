@@ -6,9 +6,8 @@ const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
 
 const app = express();
-
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://620499774c702e384b159c06--nifty-hopper-99960d.netlify.app/", credentials: true }))
 app.use(cookieParser());
 app.use(
   fileUpload({
