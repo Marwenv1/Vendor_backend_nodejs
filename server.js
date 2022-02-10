@@ -23,6 +23,14 @@ app.use("/api", require("./routes/orderRouter"));
 
 const URI = process.env.MONGO_URL;
 const PORT = process.env.PORT;
+var cors_proxy = require('cors-anywhere');
+cors_proxy.createServer({
+    originWhitelist: [], // Allow all origins
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(PORT, URI, function() {
+    console.log('Running CORS Anywhere on ' + URI + ':' + PORT);
+});
 mongoose.connect(
   URI,
   {
